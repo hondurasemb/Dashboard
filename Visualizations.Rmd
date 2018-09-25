@@ -22,17 +22,17 @@ library(scales)
 1) Load Data
 
 ```{r}
-#aprehensiones <- read.csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vS59SjalGKZ1-lHEnr3SPpXzNpVCbrxbG5EbMiuS3kcGYAxPzUpEnOeQClH6WRARIC8daUd8Fr-s7nO/pub?output=csv", stringsAsFactors = FALSE)
-#retornados <- read.csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vRrbiua29FjhzOefTMWsVHkGSHbAAK-MHt_8NxfB5vGPC5fz4gI41EQcvNXtJbmWDbB02w7ykpe6OOK/pub?output=csv", stringsAsFactors = FALSE)
+aprehensiones <- read.csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vS59SjalGKZ1-lHEnr3SPpXzNpVCbrxbG5EbMiuS3kcGYAxPzUpEnOeQClH6WRARIC8daUd8Fr-s7nO/pub?output=csv", stringsAsFactors = FALSE)
+retornados <- read.csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vRrbiua29FjhzOefTMWsVHkGSHbAAK-MHt_8NxfB5vGPC5fz4gI41EQcvNXtJbmWDbB02w7ykpe6OOK/pub?output=csv", stringsAsFactors = FALSE)
 homicidios <- read.csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vToq3XPKJuAUjXb5rGgZLz6XIQakp2XgWmMMQp0NuoOaTZN3FW10cTW-jg_eqFObGNbxAvYAyLkrSW3/pub?output=csv", stringsAsFactors = FALSE)
-#separados <- read.csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vTFScyL_9TYLtw18daOcXN1NW09rdJpUZa46r1hTYguKbOogj_S60cLv2kzMKraCU-YvwSav97hLcqw/pub?output=csv", stringsAsFactors = FALSE)
-#flags <- read.csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vSZwd0Ulsg-1BY9Uk5OSHoo3jHXoMXseB8c5SOFmEYRKS6Lto4LCne5cMQH3b6F1RUqCZJWC2lRzk64/pub?output=csv", stringsAsFactors = FALSE)
+separados <- read.csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vTFScyL_9TYLtw18daOcXN1NW09rdJpUZa46r1hTYguKbOogj_S60cLv2kzMKraCU-YvwSav97hLcqw/pub?output=csv", stringsAsFactors = FALSE)
+flags <- read.csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vSZwd0Ulsg-1BY9Uk5OSHoo3jHXoMXseB8c5SOFmEYRKS6Lto4LCne5cMQH3b6F1RUqCZJWC2lRzk64/pub?output=csv", stringsAsFactors = FALSE)
 
-#aprehensiones$mes <- mdy(aprehensiones$mes)
+aprehensiones$mes <- mdy(aprehensiones$mes)
 
-#retornados$mes <- mdy(retornados$mes)
-#retornados$total <- as.numeric(retornados$total)
-#retornados$totalusa <- as.numeric(retornados$totalusa)
+retornados$mes <- mdy(retornados$mes)
+retornados$total <- as.numeric(retornados$total)
+retornados$totalusa <- as.numeric(retornados$totalusa)
 
 homicidios$mes <- mdy(homicidios$mes)
 
@@ -106,7 +106,7 @@ ggplot(aprehensiones, aes(mes, total)) +
                          year(max(aprehensiones$mes))), 
            x = NULL, y = NULL,  subtitle = "Fuente: Reporte Quincenal de CBP") + 
   
-      ggthemes::theme_hc() + 
+      #ggthemes::theme_hc() + 
   
       theme(plot.subtitle = element_text(size = 13, 
                                          face = "italic"), 
@@ -118,13 +118,11 @@ ggplot(aprehensiones, aes(mes, total)) +
             plot.title = element_text(size = 20))
   
 
+    aprehensiones.plot + theme(plot.caption = element_text(vjust = 1), 
+    axis.text.x = element_text(angle = 35, vjust = -1))
   
-  
-  
-  
-  
-  aprehensiones.plot
-  
+    aprehensiones.plot + theme(plot.caption = element_text(vjust = 1), 
+    axis.text.x = element_text(vjust = -1))
   
   
   
